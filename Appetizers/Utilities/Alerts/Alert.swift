@@ -29,7 +29,7 @@ struct AlertContext {
 
     static let invalidURL = AlertItem(
         title: Text("Server Error"),
-        message: Text("Issue connecting to the srver.Please contact support."),
+        message: Text("Issue connecting to the server.Please contact support."),
         dismissButton: .default(Text("OK"))
     )
 
