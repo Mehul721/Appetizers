@@ -13,7 +13,7 @@ struct AlertItem: Identifiable {
     let message: Text
     let dismissButton: Alert.Button
 }
-
+// -Network Alerts
 struct AlertContext {
     static let invalidData = AlertItem(
         title: Text("Server Error"),
@@ -36,6 +36,27 @@ struct AlertContext {
     static let unableToComplete = AlertItem(
         title: Text("Server Error"),
         message: Text("Unable to complete your request at this time.If this persists, please contact support."),
+        dismissButton: .default(Text("OK"))
+    )
+// -Account Alerts
+    static let invalidForm = AlertItem(
+        title: Text("Invalid Form"),
+        message: Text("Unable to complete your request at this time.If this persists, please contact support."),
+        dismissButton: .default(Text("OK"))
+    )
+    static let invalidEmail = AlertItem(
+        title: Text("Invalid Email"),
+        message: Text("Please ensure your mail is correct."),
+        dismissButton: .default(Text("OK"))
+    )
+    static let userSaveSuccess = AlertItem(
+        title: Text("Profile Saved"),
+        message: Text("Your profile information was successfully saved."),
+        dismissButton: .default(Text("OK"))
+    )
+    static let invalidUserData = AlertItem(
+        title: Text("Profile Saved"),
+        message: Text("Error saving your retrieving your profile."),
         dismissButton: .default(Text("OK"))
     )
 }
