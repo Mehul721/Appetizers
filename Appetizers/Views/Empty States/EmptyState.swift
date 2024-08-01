@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct EmptyState: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let imageName: String
+    let message: String
 
-#Preview {
-    EmptyState()
+    var body: some View {
+        ZStack {
+            Color(.systemBackground)
+                .edgesIgnoringSafeArea(.all)
+
+            VStack {
+                Image(systemName: imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+
+                Text(message)
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding()
+            }
+            .offset(y: -100)
+        }
+    }
 }
