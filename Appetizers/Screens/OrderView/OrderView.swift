@@ -34,7 +34,7 @@ struct OrderView: View {
                 }
                 
                 if order.items.isEmpty {
-                    EmptyState(imageName: "empty-order",
+                    EmptyState(imageName: "fork.knife.circle",
                                message: "You have no items in your order.\nPlease add an appetizer.")
                 }
             }
