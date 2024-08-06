@@ -21,6 +21,11 @@ struct EmptyState: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
+                Text(message)
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
             .offset(y: -100)
         }

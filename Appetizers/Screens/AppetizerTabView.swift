@@ -8,27 +8,22 @@
 import SwiftUI
 
 struct AppetizerTabView: View {
+    
+    @EnvironmentObject var order: Order
+    
     var body: some View {
         TabView{
             AppetzierListView()
-            .tabItem {
-                    Image(systemName :"house")
-                    Text("Home")
+                .tabItem {Label("Home",systemImage: "house")
                 }
-            .badge(2)
             AccountView()
-            .tabItem {
-                    Image(systemName :"person.crop.circle")
-                    Text("Account")
+                .tabItem {Label("Account",systemImage: "person")
                 }
-            .badge("!")
             OrderView()
-            .tabItem {
-                    Image(systemName :"bag")
-                    Text("Order")
+                .tabItem {Label("Order",systemImage: "bag")
+                .badge(order.items.count)
             }
         }
-        .tint(.branddPrimary)
     }
 }
 #Preview {

@@ -8,36 +8,43 @@
 import SwiftUI
 
 struct OrderView: View {
-    @State private var orderItem = MockData.orderItems
+    
+    @EnvironmentObject var order: Order 
+    
     var body: some View {
-        NavigationView{
-            ZStack{
-                VStack{
-                    List{
-                        ForEach(MockData.orderItems){
-                            appetizer in AppetizerListCell(appetizer:appetizer)
+        NavigationView {
+            ZStack {
+                VStack {
+                    List {
+                        ForEach(order.items) { appetizer in
+                            AppetizerListCell(appetizer: appetizer)
                         }
-                        .onDelete(perform: deleteItems)
-                    }.listStyle(InsetListStyle())
-                    
-                    Button{
-                        print("order placed,")
-                    }label: {
-                        APButtons(title: "$99.99- Place Order")
+                        .onDelete(perform: order.deleteItems)
                     }
-                    .padding(.bottom,25)
+                    .listStyle(InsetListStyle())
+                    
+                    Button {
+                        print("Order placed")
+                    } label: {
+                        //APButtons(title: "$\(order.totalPrice,specifier:"%.2f")- Place Order")
+                        Text("$\(order.totalPrice,specifier:"%.2f")- Place Order")
+                    }
+                    .modifier(StandardButtonStyle())
+                    .padding(.bottom, 25)
                 }
                 
-                if orderItem.isEmpty{
-                    EmptyState(imageName:"empty-order", 
-                                message: "You have no items in your order.\nPlease add an appetizer.")
+                if order.items.isEmpty {
+                    EmptyState(imageName: "empty-order",
+                               message: "You have no items in your order.\nPlease add an appetizer.")
                 }
             }
             .navigationTitle("Orders")
-         }}
-    func deleteItems(at offesets: IndexSet){
-        orderItem.remove(atOffsets:offesets)
+        }
     }
-}
+    
+    func deleteItems(at offsets: IndexSet) {
+        order.deleteItems(at: offsets)
+    }
+} 
 
 
